@@ -42,7 +42,7 @@ RUN apt-get update && apt-get -y install \
   xz-utils
 RUN apt-get -y install \ build-essential pkg-config libc6-dev m4 g++-multilib autoconf libtool ncurses-dev \
   unzip python zlib1g-dev wget bsdmainutils automake libssl-dev libprotobuf-dev \
-  protobuf-compiler libqrencode-dev libdb++-dev software-properties-common libcurl4-openssl-dev curl && \
+  protobuf-compiler libqrencode-dev libdb++-dev software-properties-common libcurl4-openssl-dev curl 
 # Set up wine
 RUN dpkg --add-architecture i386 && \
   apt-get update && \
