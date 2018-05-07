@@ -47,6 +47,17 @@ RUN dpkg --add-architecture i386 && \
 ENV WINEARCH win64
 RUN wine hostname
 
+WORKDIR /root/
+
+RUN wget http://download.oracle.com/berkeley-db/db-6.2.23.tar.gz
+RUN tar -zxvf db-6.2.23.tar.gz
+
+WORKDIR /root/db-6.2.23/build_unix
+
+
+RUN ../dist/configure --prefix=/root/bbd --enable-cxx --disable-shared --with-pic
+RUN make && make install
+
 WORKDIR /usr/src
 # mxe master 2017-10-25
 RUN git clone https://github.com/mxe/mxe.git && \
