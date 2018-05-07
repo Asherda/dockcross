@@ -1,4 +1,4 @@
-FROM thetex/cross-compiler-base:latest
+FROM thewtex/cross-compiler-base:latest
 MAINTAINER Matt McCormick "matt.mccormick@kitware.com"
 
 # WINE is used as an emulator for try_run and tests with CMake.
