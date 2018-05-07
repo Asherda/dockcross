@@ -1,4 +1,4 @@
-FROM thewtex/cross-compiler-base:latest
+FROM dockcross/base:latest
 MAINTAINER Matt McCormick "matt.mccormick@kitware.com"
 
 # WINE is used as an emulator for try_run and tests with CMake.
@@ -40,24 +40,12 @@ RUN apt-get update && apt-get -y install \
   wget \
   wine \
   xz-utils
-
 # Set up wine
 RUN dpkg --add-architecture i386 && \
   apt-get update && \
   apt-get install -y wine32
 ENV WINEARCH win64
 RUN wine hostname
-WORKDIR /root/
-
-RUN wget http://download.oracle.com/berkeley-db/db-6.2.23.tar.gz
-RUN tar -zxvf db-6.2.23.tar.gz
-
-WORKDIR /root/db-6.2.23/build_unix
-
-
-RUN ../dist/configure --prefix=/root/bbd --enable-cxx --disable-shared --with-pic
-RUN make && make install
-
 
 WORKDIR /usr/src
 # mxe master 2017-10-25
@@ -96,4 +84,4 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name=$IMAGE \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vcs-url=$VCS_URL \
-      org.label-schema.schema-version="1.0"
+org.label-schema.schema-version="1.0"
