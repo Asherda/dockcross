@@ -6,6 +6,9 @@ MAINTAINER Matt McCormick "matt.mccormick@kitware.com"
 #   http://mxe.cc/#requirements
 # 'cmake' is omitted because it is installed from source in the base image
 RUN apt-get update && apt-get -y install \
+  build-essential pkg-config libc6-dev m4 g++-multilib autoconf libtool ncurses-dev \
+  unzip python zlib1g-dev wget bsdmainutils automake libssl-dev libprotobuf-dev \
+  protobuf-compiler libqrencode-dev libdb++-dev software-properties-common libcurl4-openssl-dev curl && \
   autoconf \
   automake \
   autopoint \
